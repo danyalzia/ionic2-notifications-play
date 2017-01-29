@@ -1,0 +1,42 @@
+
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Local</ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content padding>
+
+This is a local notification page. You need to set the app to background to get the Scheduled notification. One time notification can be received while the app is running in the foreground.
+
+<div>
+	<br>
+	<h2>Schedule</h2>
+	<button ion-button full primary (click)="schedule()">Schedule Single</button>
+	<button ion-button full primary (click)="scheduleDelay()">Schedule Delay</button>
+	<button ion-button full primary (click)="scheduleMultiple()">Schedule Multiple</button>
+</div>
+
+<div>
+	<br>
+	<h2>Schedule With Date and Time</h2>
+	<ion-list no-lines>
+
+		<ion-item>
+		  <ion-datetime displayFormat="h:mm A" pickerFormat="h mm A" [(ngModel)]="notifyTime" (ionChange)="setTimeChange($event)"></ion-datetime>
+		</ion-item>
+
+		<ion-item *ngFor="let day of days">
+			<ion-label>{{day.title}}</ion-label>
+			<ion-checkbox [(ngModel)]="day.checked" color="primary"></ion-checkbox>
+		</ion-item>
+
+	</ion-list>
+		
+	<button (click)="addNotifications()" ion-button full>Schedule</button>
+</div>
+</ion-content>
